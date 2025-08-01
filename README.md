@@ -2,3 +2,4 @@
 ### Built with
 - React
 - Vite
+- Vitest + Testing Library
