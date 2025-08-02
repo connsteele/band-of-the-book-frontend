@@ -1,5 +1,8 @@
 import style from "../styles/Post.module.css"
 
+const MAX_WORDCOUNT = 310;
+
+// For blog wall
 const Post = ({post}) => {
     return (
         <li className={style.post}>
@@ -12,7 +15,8 @@ const Post = ({post}) => {
                 <p><b>Blogger:</b> {post.blogger}</p>
                 {post.rating ? <p>Rating: {post.rating} / 5.00</p> : null}
             </div>
-            <p className={style["post-content"]}>{post.content}</p>
+            <p className={style["post-content"]}>{post.content.length > MAX_WORDCOUNT ? 
+            post.content.slice(0, MAX_WORDCOUNT) + "..." : post.content}</p>
         </li>
     );
 };
