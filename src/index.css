@@ -10,9 +10,11 @@
     --color-background: #2b2a33;
 }
 
-body {
+#root {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     background-color: var(--color-background);
     color: var(--color-text);
+    width: 100%;
+    min-height: 100dvh;
 }

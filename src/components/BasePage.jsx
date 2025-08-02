@@ -3,7 +3,7 @@ import styles from "../styles/BasePage.module.css"
 
 const BasePage = ({children, location}) => {
     return (
-        <div className={styles.main}>
+        <div className={styles.page}>
             <Header location={location}/>
             {children}
         </div>

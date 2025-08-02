@@ -1,5 +1,6 @@
-.main {
+.page {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 100px 1fr;
+    height: 100%;
 }
