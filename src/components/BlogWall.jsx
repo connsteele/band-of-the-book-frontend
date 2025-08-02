@@ -7,7 +7,8 @@ const BlogWall = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await getPosts();
+            const index = "/posts/index.json";
+            const data = await getPosts(index);
             setPosts([...posts].concat(data));
         })();
 
@@ -24,7 +25,7 @@ const BlogWall = () => {
                         { post.series ? <p>Series: {post.series}</p> : null}
                         <p>Author: {post.book}</p>
                         { post.rating ? <p>Rating: {post.rating} / 5.00</p> : null}
-                        <p>Reviewer: {post.poster}</p>
+                        <p>Blogger: {post.blogger}</p>
                         <p>{post.content}</p>
                     </li>
                 ))}
