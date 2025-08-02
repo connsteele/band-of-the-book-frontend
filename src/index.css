@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
 
-    --color-primary: #462477;
-    --color-header: #557724;
-    --color-complement2: #77242C;
-    --color-complement3: #247770;
+    --color-purple: #462477;
+    --color-green: #557724;
+    --color-red: #77242C;
+    --color-blue: #247770;
     --color-text: white;
     --color-background: #2b2a33;
 }

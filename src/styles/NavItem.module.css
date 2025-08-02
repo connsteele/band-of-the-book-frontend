@@ -1,0 +1,16 @@
+@import "../index.css";
+
+.nav-item {
+    padding: .5rem;
+    border-radius: 8px;
+    font-size: 1.5rem ;
+    border: none;
+    color: white;
+    text-decoration: underline .25rem rgba(0, 0, 0, 0);
+    transition: text-decoration-color 400ms;
+}
+
+.nav-item:hover {
+    text-decoration: underline .2rem var(--color-red);
+}
+
