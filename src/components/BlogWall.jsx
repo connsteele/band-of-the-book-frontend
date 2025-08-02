@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
 import style from "../styles/BlogWall.module.css"
-
+import getPosts from "../modules/getPosts";
 
 const BlogWall = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const getPosts = async () => {
-            try {
-                const response = await fetch("/posts/connor-review-1.json");
-                const data = await response.json();
-                console.log(data);
-                setPosts([...posts, data]);
-                
-            } catch (e) {
-                console.error(e);
-            }
-        };
+        (async () => {
+            const data = await getPosts();
+            setPosts([...posts].concat(data));
+        })();
 
-        getPosts();
     }, []);
 
     return(
