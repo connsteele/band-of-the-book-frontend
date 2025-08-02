@@ -1,15 +1,15 @@
+import { useState } from "react";
 import style from "../styles/BlogWall.module.css"
 
+const data = {};
+
 const BlogWall = () => {
-    const arr = [];
-    for (let i = 0; i < 1000; i++)
-        arr.push("hello");
+    const [posts, setPosts] = useState(data);
+
     return(
         <div className={style["blog-wall"]}>
             <ul>
-                {
-                   arr.map((item) => (<li>{item}</li>))
-                }
+                {}
             </ul>
         </div>
     );

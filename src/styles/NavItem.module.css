@@ -1,7 +1,7 @@
 @import "../index.css";
 
 .nav-item {
-    position: relative;
+    
     padding: .5rem;
     border-radius: 8px;
     font-size: 1.5rem ;
@@ -10,11 +10,16 @@
     text-decoration: underline .25rem rgba(0, 0, 0, 0);
 }
 
-.nav-item:hover {
+.nav-item-text {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-item-text:hover {
     cursor: pointer;
 }
 
-.nav-item::after{
+.nav-item-text::after{
     content: "";
     position: absolute;
     width: 100%;
@@ -22,12 +27,13 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0);
-    transform: scale(0, -1);
+    transform: scaleX(0) translate(0, 1rem);
     transform-origin: bottom center;
     transition: transform 180ms, background-color 180ms;
 }
 
-.nav-item:hover::after{
-    transform: scale(1, 1);
+.nav-item-text:hover::after{
+    transform: scaleX(1) translate(0, .25rem);
     background-color: var(--color-purple);
+    z-index: -1;
 }
