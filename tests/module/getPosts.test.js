@@ -5,7 +5,7 @@ describe("getPosts", () => {
     it("Fetches and returns post json", async () => {
         // All attributes
         const test1 = {
-            title: "test review",
+            type: "review",
             book: "test book",
             author: "test author",
             blogger: "test poster",
@@ -22,7 +22,7 @@ describe("getPosts", () => {
             blogger: "test poster",
             content: "test content",
             date: "2025-07-30",
-            title: "test review"
+            type: "discussion"
         };
 
         // Mock fetch to get harcoded data
@@ -62,7 +62,7 @@ describe("getPosts", () => {
             book: "test book",
             blogger: "test poster",
             date: "2025-07-30",
-            title: "test review"
+            type: "review"
         };
 
         globalThis.fetch = vi.fn(async (url) => {

@@ -1,4 +1,4 @@
-const requiredAtrib = ["title", "book", "author", "blogger", "date", "content"];
+const requiredAtrib = ["type", "book", "author", "blogger", "date", "content"];
 
 const getPosts = async (index) => {
     try {

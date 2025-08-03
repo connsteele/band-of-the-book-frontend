@@ -1,11 +1,11 @@
 {
-    "title": "Discussion: I Who Have Never Known Men",
-    "book": "I Who Have Never Known Men",
-    "coverImg": "https://m.media-amazon.com/images/I/61UDotKTPWL._SL1500_.jpg",
-    "series": false,
     "author": "Jacqueline Harpman",
     "blogger": "Connor Steele",
-    "rating": false,
+    "book": "I Who Have Never Known Men",
+    "content": "Looking forward to reading this classic dystopian book.",
+    "coverImg": "https://m.media-amazon.com/images/I/61UDotKTPWL._SL1500_.jpg",
     "date": "2025-08-01",
-    "content": "Looking forward to reading this classic dystopian book."
+    "rating": false,
+    "series": false,
+    "type": "discussion"
 }
