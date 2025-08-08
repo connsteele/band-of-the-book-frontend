@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LoaderPinwheel } from "lucide-react";
 import style from "../styles/BlogWall.module.css"
 import usePosts from "./usePosts";
 import Post from "./Post";
@@ -9,7 +10,13 @@ const index = "/posts/index.json";
 const BlogWall = () => {
     const { posts, error, loading } = usePosts(index);
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return (
+        <div className={style["loading"]}>
+            <div className={style.spinner}>
+                <LoaderPinwheel size={"70px"} strokeWidth={1.2} color={"#EF4136"} />
+            </div>
+        </div>
+    );
 
     if (error) return <p>Error!</p>
 
