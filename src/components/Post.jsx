@@ -5,7 +5,7 @@ import style from "../styles/Post.module.css"
 const charLimit = 295;
 
 // For blog wall
-const Post = ({post}) => {
+const Post = ({ post }) => {
     const [expand, setExpand] = useState(false);
     const [styleNames, setStyleNames] = useState(`${style.post}`);
     const postTitle = `${post.type[0].toLocaleUpperCase()}${post.type.slice(1)}: ${post.book}`
@@ -17,17 +17,21 @@ const Post = ({post}) => {
                 <p>by {post.author}</p>
                 {post.series ? <p><em>{post.series}</em></p> : null}
             </div>
-            {post.coverImg ? <img src={post.coverImg} alt={post.book + " book cover"} /> : null}
 
-            {(post.content.length > charLimit && !expand) 
+            <div className={style["img-container"]} style={{"--book-cover": `url(${post.coverImg})`}}>
+                {post.coverImg
+                    ? <img src={post.coverImg} alt={post.book + " book cover"} />
+                    : null}
+            </div>
+
+            {(post.content.length > charLimit && !expand)
                 ? <span className={style["post-content"]}>
                     <p >{post.content.slice(0, charLimit) + "..."}</p>
-                    <p className={style["read-more"]} onClick={() => 
-                        {setExpand(true); setStyleNames(`${style.post} ${style.expand}`);}}>Read More</p>
-                </span> 
-                : (post.content.length > charLimit && expand) 
-                ? <span className={style["post-content"]}><p>{post.content}</p></span> 
-                : <p className={style["post-content"]}>{post.content}</p>
+                    <p className={style["read-more"]} onClick={() => { setExpand(true); setStyleNames(`${style.post} ${style.expand}`); }}>Read More</p>
+                </span>
+                : (post.content.length > charLimit && expand)
+                    ? <span className={style["post-content"]}><p>{post.content}</p></span>
+                    : <p className={style["post-content"]}>{post.content}</p>
             }
         </div>
     );
