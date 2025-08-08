@@ -1,0 +1,13 @@
+@import "../index.css";
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-grey);
+    max-height: min-content;
+    max-width: max-content;
+    border-radius: 8px;
+    padding: 2rem;
+    color: var(--color-white);
+    font-size: 1.2rem;
+};

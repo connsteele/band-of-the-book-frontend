@@ -7,10 +7,9 @@
     grid-template-rows: min-content min-content 550px min-content min-content;
     row-gap: 5px;
     padding: 2rem;
-    max-height: 1000px;
-    width: 550px;
+    max-height: 850px;
+    max-width: 550px;
     background-color: var(--color-grey);
-    /* outline: 5px solid var(--color-red); */
     font-size: 1.25rem;
     transition: max-height 200ms;
 }
@@ -22,7 +21,7 @@
 
 .post-title {
     font-size: 1.75rem;
-    grid-row: 1 / 2
+    grid-row: 1 / 2;
 }
 
 .book-info {

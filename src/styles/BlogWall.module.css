@@ -17,3 +17,9 @@
     margin-bottom: 3rem;
     gap: 3rem;
 }
+
+.blog-wall ul > li {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 1rem;
+}
