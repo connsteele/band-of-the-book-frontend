@@ -1,14 +1,13 @@
-@import "../index.css";
 
 .post {
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content 550px min-content min-content;
     row-gap: 5px;
     padding: 2rem;
-    max-height: 850px;
-    max-width: 550px;
+    max-height: 800px;
+    max-width: 100%;
     background-color: var(--color-grey);
     font-size: 1.25rem;
     transition: max-height 200ms;

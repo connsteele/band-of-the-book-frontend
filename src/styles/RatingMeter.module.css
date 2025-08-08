@@ -1,0 +1,32 @@
+.meter-bg {
+    width: 100%;
+    height: 5rem;
+    background-image: linear-gradient(to right, var(--color-rating-0), var(--color-rating-50), var(--color-rating-100));
+    border-radius: var(--border-radius);
+    outline: 2px solid var(--color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.meter-empty {
+    height: 100%;
+    --empty-percent: 0%;
+    width: var(--empty-percent);
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: var(--color-black);
+    z-index: 1;
+}
+
+.score {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px var(--color-black);
+    position: absolute;
+    /* center the element */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}

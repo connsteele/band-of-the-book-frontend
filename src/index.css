@@ -25,11 +25,14 @@
     --color-black: #09090b;
     --color-grey: #1a1c23;
     --color-purple: #462477;
-    /* Tekhelet */
     --color-red: #EF4136;
-    /* Vermillion */
     --color-white: #f0f4ef;
-    /* Baby Powder */
+    --color-rating-0: #1a1c23;
+    --color-rating-50: #8c2f39;
+    --color-rating-100: #ef4136;
+
+    --content-width: 1100px;
+    --border-radius: 10px;
 }
 
 #root {
