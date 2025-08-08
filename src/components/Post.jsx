@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import style from "../styles/Post.module.css"
 
 const charLimit = 285;

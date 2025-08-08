@@ -4,7 +4,7 @@
     
     padding: .5rem;
     border-radius: 8px;
-    font-size: 1.5rem ;
+    font-size: 1.25rem ;
     border: none;
     color: white;
     text-decoration: underline .25rem rgba(0, 0, 0, 0);
@@ -34,6 +34,6 @@
 
 .nav-item-text:hover::after{
     transform: scaleX(1) translate(0, .25rem);
-    background-color: var(--color-purple);
+    background-color: var(--color-white);
     z-index: -1;
 }

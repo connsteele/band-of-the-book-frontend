@@ -2,19 +2,18 @@
     margin: 0;
     padding: 0;
 
-    --color-purple: #462477;
-    --color-green: #557724;
-    --color-red: #77242C;
-    --color-blue: #247770;
-    --color-text: white;
-    --color-background: #2b2a33;
+    --color-black: #09090b;
+    --color-grey: #1a1c23;
+    --color-purple: #462477; /* Tekhelet */
+    --color-red: #EF4136; /* Vermillion */
+    --color-white: #f0f4ef; /* Baby Powder */
 }
 
 #root {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--color-black);
+    color: var(--color-white);
     width: 100%;
     min-height: 100dvh;
 }
