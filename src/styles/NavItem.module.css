@@ -33,7 +33,7 @@
 }
 
 .nav-item-text:hover::after{
-    transform: scaleX(1) translate(0, .25rem);
+    transform: scaleX(1) translate(0, .6rem);
     background-color: var(--color-white);
     z-index: -1;
 }

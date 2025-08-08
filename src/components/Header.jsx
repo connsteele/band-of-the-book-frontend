@@ -4,9 +4,11 @@ import HeaderNav from "./HeaderNav";
 
 const Header = ({location}) => {
     return(
-        <div className={style.header}>
-            <HeaderBrand location={location}/>
-            <HeaderNav />
+        <div className={style.headerBG}>
+            <div className={style.header}>
+                <HeaderBrand location={location}/>
+                <HeaderNav />
+            </div>
         </div>
     );
 };

@@ -5,7 +5,7 @@ const PostInfo = ({ post }) => {
         <div className={style["post-info"]}>
 
             <p><b>Blogger:</b> {post.blogger}</p>
-            {post.rating ? <p><b>Rating:</b> {post.rating} / 5.00</p> : null}
+            {post.rating ? <p><b>Rating:</b> {post.rating.toFixed(2)} / 5.00</p> : null}
             {!post.genre
                 ? null
                 : post.genre.length == 1

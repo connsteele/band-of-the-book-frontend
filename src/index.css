@@ -1,16 +1,39 @@
-*, :root {
+@font-face {
+    font-family: 'libertinus-sans';
+    src: url("./assets/fonts/LibertinusSans-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'libertinus-sans';
+    src: url("./assets/fonts/LibertinusSans-Italic.ttf") format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'libertinus-sans';
+    src: url("./assets/fonts/LibertinusSans-Bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+*,
+:root {
     margin: 0;
     padding: 0;
 
     --color-black: #09090b;
     --color-grey: #1a1c23;
-    --color-purple: #462477; /* Tekhelet */
-    --color-red: #EF4136; /* Vermillion */
-    --color-white: #f0f4ef; /* Baby Powder */
+    --color-purple: #462477;
+    /* Tekhelet */
+    --color-red: #EF4136;
+    /* Vermillion */
+    --color-white: #f0f4ef;
+    /* Baby Powder */
 }
 
 #root {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "libertinus-sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     background-color: var(--color-black);
     color: var(--color-white);

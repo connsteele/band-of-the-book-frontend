@@ -6,6 +6,7 @@ const HeaderNav = () => {
         <ul className={style["header-nav"]}>
             <NavItem text="Blog" />
             <NavItem text="About" />
+            <NavItem text="Post" />
         </ul>  
     )
 };
