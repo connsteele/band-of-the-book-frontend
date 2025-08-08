@@ -1,7 +1,6 @@
 .header-brand {
     display: flex;
     align-items: center;
-    padding: 5px;
 }
 
 .header-brand > h1 {

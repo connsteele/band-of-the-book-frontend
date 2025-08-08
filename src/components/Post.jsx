@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { LoaderPinwheel } from "lucide-react";
 import style from "../styles/Post.module.css"
 
-const charLimit = 285;
+const charLimit = 295;
 
 // For blog wall
 const Post = ({post}) => {

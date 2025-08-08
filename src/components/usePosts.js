@@ -10,7 +10,7 @@ const usePosts = (index) => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, 10000)); // For testing load
+                // await new Promise(resolve => setTimeout(resolve, 10000)); // For testing load
                 // throw new Error("Error Test"); // For testing error
                 const indexRes = await fetch(index);
                 const postFiles = await indexRes.json();

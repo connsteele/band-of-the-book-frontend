@@ -6,6 +6,7 @@
     grid-template-rows: min-content min-content 550px min-content min-content;
     row-gap: 5px;
     padding: 2rem;
+    height: min-content;
     max-height: 800px;
     max-width: 100%;
     background-color: var(--color-grey);
@@ -47,13 +48,10 @@
 }
 
 .post-content > .read-more {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    color: white;
+    text-align: center;
+    color: var(--color-white);
     font-weight: bold;
-    font-style: italic;
-    text-decoration: none;
+    text-decoration: underline;
     cursor: pointer;
 }
 
