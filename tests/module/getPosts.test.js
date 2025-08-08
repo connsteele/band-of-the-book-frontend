@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import getPosts from "../../src/modules/getPosts";
+import { renderHook, waitFor } from "@testing-library/react";
+import usePosts from "../../src/components/usePosts";
 
-describe("getPosts", () => {
+describe("usePosts", () => {
     it("Fetches and returns post json", async () => {
         // All attributes
         const test1 = {
@@ -50,8 +51,9 @@ describe("getPosts", () => {
 
 
         const index = "/posts/tests.json"
-        const posts = await getPosts(index);
-        expect(posts).toEqual([test1, test2]);
+        const {result} = renderHook(() => usePosts(index));
+
+        await waitFor(() => expect(result.current.posts).toEqual([test1, test2]));
     });
 
 
@@ -83,7 +85,8 @@ describe("getPosts", () => {
         });
 
         const index = "/posts/tests.json";
-        await expect(getPosts(index)).rejects.toThrowError(`Required post attribute "content" is missing!`);
+        const {result} = renderHook(() => usePosts(index));
+        await waitFor(() => expect(result.current.error).toBe(true));
 
     });
 });

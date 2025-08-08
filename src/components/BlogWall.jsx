@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import style from "../styles/BlogWall.module.css"
-import getPosts from "../modules/getPosts";
+import usePosts from "./usePosts";
 import Post from "./Post";
 import PostInfo from "./PostInfo.Jsx";
 
+const index = "/posts/index.json";
+
 const BlogWall = () => {
-    const [posts, setPosts] = useState([]);
+    const { posts, error, loading } = usePosts(index);
 
-    useEffect(() => {
-        (async () => {
-            const index = "/posts/index.json";
-            const data = await getPosts(index);
-            setPosts([...posts].concat(data));
-        })();
+    if (loading) return <p>Loading...</p>
 
-    }, []);
+    if (error) return <p>Error!</p>
 
-    return(
+    return (
         <div className={style["blog-wall"]}>
             <ul>
                 {posts.map((post) => (
