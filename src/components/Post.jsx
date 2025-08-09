@@ -1,38 +1,32 @@
 import { useState } from "react";
 import { LoaderPinwheel } from "lucide-react";
 import style from "../styles/Post.module.css"
+import RatingMeter from "./RatingMeter";
 
 const charLimit = 295;
 
 // For blog wall
 const Post = ({ post }) => {
-    const [expand, setExpand] = useState(false);
-    const [styleNames, setStyleNames] = useState(`${style.post}`);
-    const postTitle = `${post.type[0].toLocaleUpperCase()}${post.type.slice(1)}: ${post.book}`
-
     return (
-        <div className={styleNames}>
-            <h1 className={style["post-title"]}>{postTitle}</h1>
-            <div className={style["book-info"]}>
-                <p>by {post.author}</p>
-                {post.series ? <p><em>{post.series}</em></p> : null}
+        <div className={style.post}>
+            <div className={`${style.container} ${style["cover-img"]}`}>
+                <img src={post.coverImg} alt={`${post.book} Cover Image`} />
             </div>
-
-            <div className={style["img-container"]} style={{"--book-cover": `url(${post.coverImg})`}}>
-                {post.coverImg
-                    ? <img src={post.coverImg} alt={post.book + " book cover"} />
-                    : null}
+            <div className={`${style.container} ${style.title}`}>
+                <h1>{post.book}</h1>
+                {post.series ? <h3><em>{post.series} #{post.entry}</em></h3> : null}
             </div>
-
-            {(post.content.length > charLimit && !expand)
-                ? <span className={style["post-content"]}>
-                    <p >{post.content.slice(0, charLimit) + "..."}</p>
-                    <p className={style["read-more"]} onClick={() => { setExpand(true); setStyleNames(`${style.post} ${style.expand}`); }}>Read More</p>
-                </span>
-                : (post.content.length > charLimit && expand)
-                    ? <span className={style["post-content"]}><p>{post.content}</p></span>
-                    : <p className={style["post-content"]}>{post.content}</p>
-            }
+            <div className={`${style.container} ${style.info}`}>
+                <p><b>Author:</b> {post.author}</p>
+                <p><b>Genre:</b> {post.genre.join(", ")}</p>
+                <p><b>Format:</b> {post.format.join(", ")}</p>
+            </div>
+            <div className={`${style.container} ${style.content}`}>
+                {post.rating ? <RatingMeter score={post.rating} /> : null}
+                <h2>Reviewer: {post.blogger}</h2>
+                <hr />
+                <p>{post.content}</p>
+            </div>
         </div>
     );
 };

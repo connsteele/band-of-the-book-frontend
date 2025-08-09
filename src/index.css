@@ -4,12 +4,14 @@
     font-weight: 400;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'libertinus-sans';
     src: url("./assets/fonts/LibertinusSans-Italic.ttf") format('truetype');
     font-weight: 400;
     font-style: italic;
 }
+
 @font-face {
     font-family: 'libertinus-sans';
     src: url("./assets/fonts/LibertinusSans-Bold.ttf") format('truetype');
@@ -32,7 +34,7 @@
     --color-rating-100: #ef4136;
 
     --content-width: 1100px;
-    --border-radius: 10px;
+    --border-radius: 20px;
 }
 
 #root {
