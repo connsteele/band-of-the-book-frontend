@@ -1,4 +1,5 @@
 import HomePage from "./pages/HomePage"
+import FormPage from "./pages/FormPage";
 
 const routes = [
     {
@@ -7,7 +8,7 @@ const routes = [
     },
     {
         path: '/post',
-        // element: <MakePost />,
+        element: <FormPage />,
     },
 ];
 

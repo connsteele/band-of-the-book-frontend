@@ -1,11 +1,11 @@
 import Header from "../components/Header";
 import styles from "../styles/BasePage.module.css"
 
-const BasePage = ({children, location}) => {
+const BasePage = ({children: child, location}) => {
     return (
         <div className={styles.page}>
             <Header location={location}/>
-            {children}
+            {child}
         </div>
     )
 };
