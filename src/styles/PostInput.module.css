@@ -1,12 +1,13 @@
 .input {
-    padding: .75rem;
+    padding: 1rem;
     font-size: 1.5rem;
     border: none;
     border-radius: var(--border-radius);
     outline: none;
     text-overflow: ellipsis;
     width: 100%;
-    color: var(--color-black);
+    color: var(--color-white);
+    background-color: var(--color-grey);
 }
 
 .input::placeholder {
@@ -15,7 +16,7 @@
 
 .input:focus {
     border: none;
-    outline: 3px solid rgb(99, 99, 144);
+    outline: 3px solid var(--color-purple);
 }
 
 .label {

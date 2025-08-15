@@ -1,21 +1,16 @@
 import { useState } from "react";
 import style from "../styles/PostInput.module.css"
 
-const PostInput = ({ type = "text", label = false, name, value = "", ...prop }) => {
-    const [inpValue, setInpValue] = useState(value);
+const PostInput = ({ type = "text", label = false, handler, name, value, ...prop }) => {
     const id = name;
-
-    const handleChange = (e) => {
-        setInpValue(e.target.value);
-    }
 
     let inpProps = {
         className: style.input,
         type,
         id,
         name,
-        value: inpValue,
-        onChange: handleChange,
+        value: value,
+        onChange: handler,
         ...prop
     };
 

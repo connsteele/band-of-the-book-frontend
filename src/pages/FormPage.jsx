@@ -7,7 +7,7 @@ const FormPage = () => {
     return (
         <BasePage>
             <div className={style["form-page"]}>
-                <h1>Enter Post Information</h1>
+                <h1>Create Post</h1>
                 <PostForm />
             </div>
         </BasePage>
