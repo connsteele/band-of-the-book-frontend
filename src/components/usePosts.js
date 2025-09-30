@@ -11,8 +11,9 @@ const usePosts = () => {
         const fetchPosts = async () => {
             try {
                 const base = import.meta.env.VITE_API_URL;
+                const resource = "posts";
                 const params = new URLSearchParams({limit: "10", order: "desc"});
-                const url = `${base}?${params.toString()}`;
+                const url = `${base}/${resource}?${params.toString()}`;
                 const res = await fetch(url, {
                     method: "GET"
                 });
