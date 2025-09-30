@@ -21,6 +21,8 @@ const usePosts = () => {
                 const data = await res.json();
                 console.log(data);
 
+                setPosts(data);
+
             } catch (e) {
                 console.error(e);
                 setError(true);

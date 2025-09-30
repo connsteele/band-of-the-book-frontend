@@ -24,7 +24,7 @@ const BlogWall = () => {
             <ul>
                 {posts.map((post) => (
                     <li>
-                        {/* <Post post={post} /> */}
+                        {<Post post={post} />}
                     </li>
                 ))}
             </ul>
