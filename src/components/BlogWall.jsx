@@ -5,10 +5,9 @@ import usePosts from "./usePosts";
 import Post from "./Post";
 import PostInfo from "./PostInfo";
 
-const index = "/posts/index.json";
 
 const BlogWall = () => {
-    const { posts, error, loading } = usePosts(index);
+    const { posts, error, loading } = usePosts();
 
     if (loading) return (
         <div className={style["loading"]}>
@@ -25,7 +24,7 @@ const BlogWall = () => {
             <ul>
                 {posts.map((post) => (
                     <li>
-                        <Post post={post} />
+                        {/* <Post post={post} /> */}
                     </li>
                 ))}
             </ul>
