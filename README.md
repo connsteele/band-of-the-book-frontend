@@ -9,3 +9,4 @@
 - Create `.env` file
   - For vite processed code only variables prefixed with `VITE_` will be exposed
   - add `VITE_API_URL` variable with the root URL for the backend
+  - 
