@@ -6,6 +6,10 @@ const routes = [
         path: "/",
         element: <HomePage />,
     },
+        {
+        path: "/blog",
+        element: <HomePage />,
+    },
     {
         path: '/post',
         element: <FormPage />,

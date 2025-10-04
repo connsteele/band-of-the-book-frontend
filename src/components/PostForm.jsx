@@ -32,6 +32,27 @@ const PostForm = ({ children }) => {
         },
         {
             type: "text",
+            name: "cover",
+            placeholder: "Book Cover URL",
+            label: true,
+            required: true
+        },
+        {
+            type: "text",
+            name: "genres",
+            placeholder: "Comma seperated genres",
+            label: true,
+            required: true
+        },
+                {
+            type: "text",
+            name: "formats",
+            placeholder: "Comma seperated reading format",
+            label: true,
+            required: true
+        },
+        {
+            type: "text",
             name: "series",
             placeholder: "Series",
             label: true,
@@ -45,7 +66,7 @@ const PostForm = ({ children }) => {
         },
         {
             type: "number",
-            name: "rating",
+            name: "score",
             placeholder: "0.00",
             min: 0,
             max: 5,
@@ -58,17 +79,16 @@ const PostForm = ({ children }) => {
     return (
         <form action="" method="post">
             <ul className={style["fields"]}>
-                {fields
-                    .map((field) => (
-                        <li>
-                            <PostInput
-                                key={field.name}
-                                {...field}
-                                value={post[field.name]}
-                                handler={handleChange}
-                            />
-                        </li>
-                    ))}
+                {fields.map((field) => (
+                    <li>
+                        <PostInput
+                            key={field.name}
+                            {...field}
+                            value={post[field.name]}
+                            handler={handleChange}
+                        />
+                    </li>
+                ))}
 
                 <li>
                     <PostTextArea
