@@ -103,10 +103,13 @@ const PostForm = ({ children }) => {
         },
     ];
 
-    const url = import.meta.env.VITE_API_URL + "/post";
+    // Add user id to this as parameter
+    const userId = "/cda25eb7-992a-46b2-9427-c9be590da772"
+    const url = import.meta.env.VITE_API_URL + "/users" + userId + "/posts";
+    const formMethod = "POST";
     return (
 
-        <form action={url} method="POST">
+        <form action={url} method={formMethod}>
             <ul className={style["fields"]}>
                 {fields.map((field) => (
                     <li>
@@ -129,7 +132,8 @@ const PostForm = ({ children }) => {
                     />
                 </li>
             </ul>
-            <button>Preview Post</button>
+            <button type="submit">Submit</button>
+            {/* <button>Preview Post</button> */}
         </form>
     )
 

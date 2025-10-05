@@ -42,6 +42,9 @@ const PostInput = ({ type = "text", label = false, handler, name, value, options
                             ...base,
                             backgroundColor: "var(--color-grey)",
                             color: "var(--color-white)",
+                            fontSize: "1.5rem",
+                            padding: ".5rem",
+                            borderRadius: "var(--border-radius)",
                         }),
                         menu: (base, state) => ({
                             ...base,
