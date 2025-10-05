@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-const requiredAtrib = ["type", "book", "author", "blogger", "date", "content"];
 
 const usePosts = () => {
     const [posts, setPosts] = useState([]);
@@ -22,7 +21,7 @@ const usePosts = () => {
                 const data = await res.json();
                 console.log(data);
 
-                setPosts(data);
+                setPosts(data.result);
 
             } catch (e) {
                 console.error(e);

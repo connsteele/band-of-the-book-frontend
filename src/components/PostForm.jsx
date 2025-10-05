@@ -1,12 +1,18 @@
 import { useState } from "react";
+import useFormats from "../hooks/useFormats";
+import useGenres from "../hooks/useGenres";
 import PostInput from "../components/PostInput";
 import PostTextArea from "./PostTextArea";
 import style from "../styles/PostForm.module.css"
 
 const PostForm = ({ children }) => {
     const [post, setPost] = useState({
-
+        genres: [],
+        formats: [],
     });
+
+    const apiFormats = useFormats();
+    const apiGenres = useGenres();
 
     const handleChange = (e) => {
         setPost(prevPost => ({
@@ -14,6 +20,21 @@ const PostForm = ({ children }) => {
             [e.target.name]: e.target.value,
         }));
     };
+
+    const handleGenres = (e) => {
+        setPost(prevPost => ({
+            ...prevPost,
+            genres: [...e],
+        }));
+    };
+
+    const handleFormats = (e) => {
+        setPost(prevPost => ({
+            ...prevPost,
+            formats: [...e],
+        }));
+    };
+
 
     const fields = [
         {
@@ -42,14 +63,20 @@ const PostForm = ({ children }) => {
             name: "genres",
             placeholder: "Comma seperated genres",
             label: true,
-            required: true
+            required: true,
+            select: "multi",
+            options: apiGenres,
+            handler: handleGenres
         },
-                {
+        {
             type: "text",
             name: "formats",
             placeholder: "Comma seperated reading format",
             label: true,
-            required: true
+            required: true,
+            select: "multi",
+            options: apiFormats,
+            handler: handleFormats
         },
         {
             type: "text",
@@ -76,8 +103,10 @@ const PostForm = ({ children }) => {
         },
     ];
 
+    const url = import.meta.env.VITE_API_URL + "/post";
     return (
-        <form action="" method="post">
+
+        <form action={url} method="POST">
             <ul className={style["fields"]}>
                 {fields.map((field) => (
                     <li>
@@ -85,7 +114,7 @@ const PostForm = ({ children }) => {
                             key={field.name}
                             {...field}
                             value={post[field.name]}
-                            handler={handleChange}
+                            handler={field.handler || handleChange}
                         />
                     </li>
                 ))}

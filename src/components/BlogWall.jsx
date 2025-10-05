@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { LoaderPinwheel } from "lucide-react";
 import style from "../styles/BlogWall.module.css"
-import usePosts from "./usePosts";
+import usePosts from "../hooks/usePosts";
 import Post from "./Post";
 import PostInfo from "./PostInfo";
 
