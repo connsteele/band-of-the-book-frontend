@@ -1,5 +1,5 @@
 import { useState } from "react";
-import queryString from "query-string";
+import { getDbBook, searchBook } from "../utils/bookUtils";
 import useFormats from "../hooks/useFormats";
 import useGenres from "../hooks/useGenres";
 import PostInput from "../components/PostInput";
@@ -36,33 +36,30 @@ const PostForm = ({ children }) => {
         }));
     };
 
-    const searchBook = async (e) => {
-        // Build a search request from the post state
-        const resouce = "/books/search"
-        const base = import.meta.env.VITE_API_URL + resouce;
-        const url = queryString.stringifyUrl({
-            url: base,
-            query: {
-                title: post.book,
-                author: post.author,
-            },
-            skipNull: true, 
-            skipEmptyString: true,
-        });
+    const handleBookSearch = async (e) => {
+        // Check the db first, if good then use that endpoint, else use the google books api for autofill
+        try {
+            const endpoint = await searchBook(post);
+            if (endpoint) {
+                const book = await getDbBook(endpoint);
+                console.log(book);
+                setPost((prevPost) => ({
+                    ...prevPost,
+                    book: book.title,
+                    author: book.author,
+                    cover: book.cover,
+                    series: book.series,
+                    entry: book.entry,
+                    genres: book.genres.map((g) => ({value: g, label: g.at(0).toLocaleUpperCase() + g.slice(1)}))
 
-        const res = await fetch(url, {
-            method: "GET",
-        })
-        if (!res.ok){
-            console.error(`Error, search for "${post.book}" by "${post.author} resulted in ${res.status}"`);
-            return;
+                }));
+            }
+        } catch (err) {
+            // Search google books api via backend
+
         }
-        const data = await res.json();
-        console.log(data);
-        // use this to fetch the actual books data for form filling
-        return data.result;
-    };
 
+    };
 
     const fields = [
         {
@@ -152,7 +149,7 @@ const PostForm = ({ children }) => {
 
                 <li>
                     {/* Search the backend for existing entry, otherwise use book apis */}
-                    <button type="button" onClick={searchBook}>Search Book</button>
+                    <button type="button" onClick={handleBookSearch}>Search Book</button>
                 </li>
 
                 <li>
