@@ -1,4 +1,5 @@
 import { useState } from "react";
+import queryString from "query-string";
 import useFormats from "../hooks/useFormats";
 import useGenres from "../hooks/useGenres";
 import PostInput from "../components/PostInput";
@@ -33,6 +34,33 @@ const PostForm = ({ children }) => {
             ...prevPost,
             formats: [...e],
         }));
+    };
+
+    const searchBook = async (e) => {
+        // Build a search request from the post state
+        const resouce = "/books/search"
+        const base = import.meta.env.VITE_API_URL + resouce;
+        const url = queryString.stringifyUrl({
+            url: base,
+            query: {
+                title: post.book,
+                author: post.author,
+            },
+            skipNull: true, 
+            skipEmptyString: true,
+        });
+
+        const res = await fetch(url, {
+            method: "GET",
+        })
+        if (!res.ok){
+            console.error(`Error, search for "${post.book}" by "${post.author} resulted in ${res.status}"`);
+            return;
+        }
+        const data = await res.json();
+        console.log(data);
+        // use this to fetch the actual books data for form filling
+        return data.result;
     };
 
 
@@ -121,6 +149,11 @@ const PostForm = ({ children }) => {
                         />
                     </li>
                 ))}
+
+                <li>
+                    {/* Search the backend for existing entry, otherwise use book apis */}
+                    <button type="button" onClick={searchBook}>Search Book</button>
+                </li>
 
                 <li>
                     <PostTextArea
