@@ -2,18 +2,8 @@ import { useState } from "react";
 import style from "../styles/PostInput.module.css"
 import Select from 'react-select'
 
-const PostInput = ({ type = "text", label = false, handler, name, value, options = [], ...prop }) => {
+const PostInput = ({ type = "text", label = false, handler, name, value, isLocked, options = [], ...prop }) => {
     const id = name;
-
-    let inpProps = {
-        className: style.input,
-        type,
-        id,
-        name,
-        value: value,
-        onChange: handler,
-        ...prop
-    };
 
     if (name === "rating") {
         inpProps.min = prop.min ?? 0;
@@ -45,6 +35,9 @@ const PostInput = ({ type = "text", label = false, handler, name, value, options
                             fontSize: "1.5rem",
                             padding: ".5rem",
                             borderRadius: "var(--border-radius)",
+                            borderColor: state.isDisabled
+                                ? "var(--color-grey-light)" 
+                                : "transparent",
                         }),
                         menu: (base, state) => ({
                             ...base,
@@ -59,7 +52,8 @@ const PostInput = ({ type = "text", label = false, handler, name, value, options
                         }),
                         multiValue: (base, state) => ({
                             ...base,
-                            backgroundColor: "var(--color-white)",
+                            backgroundColor: state.isDisabled
+                                ? "var(--color-grey-light)" : "var(--color-white)",
                             color: "var(--color-black)",
                         }),
                         multiValueRemove: (base, state) => ({
@@ -72,11 +66,24 @@ const PostInput = ({ type = "text", label = false, handler, name, value, options
                     value={value}
                     isMulti
                     isClearable
+                    isDisabled={isLocked}
                     onChange={handler}
                 />
             </>
         )
     }
+
+    //---- Default inputs
+    let inpProps = {
+        className: style.input,
+        type,
+        id,
+        name,
+        value: value,
+        onChange: handler,
+        disabled: isLocked,
+        ...prop
+    };
 
     return (
         <>

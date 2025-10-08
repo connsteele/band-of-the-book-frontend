@@ -6,11 +6,21 @@ import PostInput from "../components/PostInput";
 import PostTextArea from "./PostTextArea";
 import style from "../styles/PostForm.module.css"
 
+const INIT_POST = {
+    book: "",
+    author: "",
+    cover: "",
+    series: "",
+    entry: "",
+    score: "",
+    content: "",
+    genres: [],
+    formats: [],
+}
+
 const PostForm = ({ children }) => {
-    const [post, setPost] = useState({
-        genres: [],
-        formats: [],
-    });
+    const [post, setPost] = useState(INIT_POST);
+    const [isFormLocked, setIsFormLocked] = useState(false);
 
     const apiFormats = useFormats();
     const apiGenres = useGenres();
@@ -42,7 +52,6 @@ const PostForm = ({ children }) => {
             const endpoint = await searchBook(post);
             if (endpoint) {
                 const book = await getDbBook(endpoint);
-                console.log(book);
                 setPost((prevPost) => ({
                     ...prevPost,
                     book: book.title,
@@ -50,9 +59,10 @@ const PostForm = ({ children }) => {
                     cover: book.cover,
                     series: book.series,
                     entry: book.entry,
-                    genres: book.genres.map((g) => ({value: g, label: g.at(0).toLocaleUpperCase() + g.slice(1)}))
+                    genres: book.genres.map((g) => ({ value: g, label: g.at(0).toLocaleUpperCase() + g.slice(1) }))
 
                 }));
+                setIsFormLocked(true);
             }
         } catch (err) {
             // Search google books api via backend
@@ -61,27 +71,35 @@ const PostForm = ({ children }) => {
 
     };
 
+    const handleFormReset = async (e) => {
+        setPost(INIT_POST);
+        setIsFormLocked(false);
+    };
+
     const fields = [
         {
             type: "text",
             name: "book",
             placeholder: "Book Title",
             label: true,
-            required: true
+            required: true,
+            lockable: true,
         },
         {
             type: "text",
             name: "author",
             placeholder: "First Last",
             label: true,
-            required: false
+            required: false,
+            lockable: true,
         },
         {
             type: "text",
             name: "cover",
             placeholder: "Book Cover URL",
             label: true,
-            required: true
+            required: true,
+            lockable: true,
         },
         {
             type: "text",
@@ -91,7 +109,8 @@ const PostForm = ({ children }) => {
             required: true,
             select: "multi",
             options: apiGenres,
-            handler: handleGenres
+            handler: handleGenres,
+            lockable: true,
         },
         {
             type: "text",
@@ -101,20 +120,23 @@ const PostForm = ({ children }) => {
             required: true,
             select: "multi",
             options: apiFormats,
-            handler: handleFormats
+            handler: handleFormats,
+            lockable: false,
         },
         {
             type: "text",
             name: "series",
             placeholder: "Series",
             label: true,
-            required: false
+            required: false,
+            lockable: true,
         },
         {
             type: "number",
             name: "entry",
             placeholder: "1",
             label: true,
+            lockable: true,
         },
         {
             type: "number",
@@ -124,7 +146,8 @@ const PostForm = ({ children }) => {
             max: 5,
             step: 0.25,
             label: true,
-            required: true
+            required: true,
+            lockable: false,
         },
     ];
 
@@ -143,6 +166,7 @@ const PostForm = ({ children }) => {
                             {...field}
                             value={post[field.name]}
                             handler={field.handler || handleChange}
+                            isLocked={field.lockable ? isFormLocked : false}
                         />
                     </li>
                 ))}
@@ -150,6 +174,10 @@ const PostForm = ({ children }) => {
                 <li>
                     {/* Search the backend for existing entry, otherwise use book apis */}
                     <button type="button" onClick={handleBookSearch}>Search Book</button>
+                </li>
+                <li>
+                    {/* Reset form data*/}
+                    <button type="button" onClick={handleFormReset}>Reset</button>
                 </li>
 
                 <li>
@@ -161,6 +189,16 @@ const PostForm = ({ children }) => {
                         required
                     />
                 </li>
+                {(() => {
+                    if (post.cover) {
+                        return (
+                            <li>
+                                <img src={post.cover} alt="" />
+                            </li>
+                        )
+                    }
+                    return <></>;
+                })()}
             </ul>
             <button type="submit">Submit</button>
             {/* <button>Preview Post</button> */}
