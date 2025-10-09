@@ -7,6 +7,7 @@ const HeaderNav = () => {
             <NavItem text="Blog" />
             <NavItem text="About" />
             <NavItem text="Post" />
+            <NavItem text="Log In" />
         </ul>  
     )
 };
