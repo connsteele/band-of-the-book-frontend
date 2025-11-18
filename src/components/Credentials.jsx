@@ -12,10 +12,10 @@ const Credentials = ({ fields }) => {
 
     const handleBlur = (field, e) => {
         const valid = runValidator(field.validator, field.value);
-        if (!valid) {
+        if (valid !== true) {
             setErrors(prevErrors => ({
                 ...prevErrors,
-                [field.name]: `${field.name} is invalid`
+                [field.name]: valid.message
             }))
         }
         else {
@@ -33,7 +33,6 @@ const Credentials = ({ fields }) => {
                     <label htmlFor={field.name}>
                         {field.name.at(0).toLocaleUpperCase() + field.name.slice(1)}
                     </label>
-
 
                     {
                         errors[field.name] && (
