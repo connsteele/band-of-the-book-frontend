@@ -8,4 +8,9 @@ export default defineConfig({
         environment: "jsdom",
         setupFiles: "./tests/setup.js",
     },
+    server: {
+        watch: {
+            
+        }
+    }
 })
