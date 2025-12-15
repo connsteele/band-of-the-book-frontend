@@ -82,6 +82,7 @@ const SignUp = () => {
             if (!res.ok) {
                 const resError = await res.json();
                 console.log(resError);
+                // Add error message and redirect
                 return;
             }
 
