@@ -23,8 +23,11 @@ const LogIn = () => {
         }
     ];
 
+    // Add validation to forms and front end here
+    // Change this to a fetch using post for manual control over how the response should be handled
+    // look at the signup.jsx file for how I handled it there
     return (
-        <form method="GET" action={endpoint}>
+        <form method="post" action={endpoint}>
             <Credentials fields={fields} />
             <div><button type="submit">Log In</button></div>
         </form>
